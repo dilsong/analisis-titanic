@@ -1,0 +1,41 @@
+============================================================
+REPORTE EJECUTIVO AUTOMÁTICO
+Archivo: sucio_depu.xlsx
+Fecha: 2026-03-12 13:33:28
+Registros analizados: 500
+============================================================
+
+RESUMEN GENERAL:
+• Total Vta_Total: $2,585,126.30
+• Promedio por transacción: $5,170.25
+• Valor máximo: $19,336.40
+• Valor mínimo: $53.35
+
+HALLAZGOS PRINCIPALES:
+• Region con mejor resultado: Centro ($544,550.25)
+• Region con menor resultado: Estacion ($72,139.30)
+• Vendedor estrella: Carlos Ruiz ($520,308.00)
+• Vendedor crítico: Vend_Anonimo ($99,050.56)
+• Categoria líder: HOGAR ($595,374.98)
+• Categoria crítica: ROPA ($460,804.60)
+• Tienda top: T001 ($591,424.27)
+• Tienda más baja: T003 ($423,929.13)
+
+PUNTOS CRÍTICOS:
+
+• Region crítico: Estacion ($72,139.30)
+  Representa 2.8% del total
+  → Categoria más débil en Estacion: ALIMENTOS ($716.64)
+  → Vendedor crítico en Estacion: Vend_Anonimo ($270.30)
+  → Tienda más baja en Estacion: T002 ($446.34)
+  → Recomendación: Investigar estrategia de Estacion
+    con foco en Categoria y Vendedor.
+
+RESUMEN ANUAL DE Vta_Total:
+• 2024: $899,207.29
+• 2025: $1,268,938.41
+• 2026: $230,711.57 (4 meses calculados)
+• 2024 vs 2025: crecimiento 📈 (+41.1%)
+
+• Proyección 2026 (base 4 meses): $692,134.71
+• Resultado proyectado vs 2025: negativo 📉 (-45.5%)

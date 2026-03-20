@@ -1,0 +1,32 @@
+============================================================
+REPORTE EJECUTIVO AUTOMÁTICO
+Archivo: SuperMarket_Ok.xlsx
+Fecha: 2026-03-15 15:38:23
+Registros analizados: 1000
+============================================================
+
+RESUMEN GENERAL:
+• Total Ventas: $322,966.82
+• Promedio por transacción: $322.97
+• Valor máximo: $1,042.65
+• Valor mínimo: $10.68
+
+HALLAZGOS PRINCIPALES:
+• Ciudad con mejor resultado: Naypyitaw ($110,568.71)
+• Ciudad con menor resultado: Mandalay ($106,197.74)
+• Linea de producto estrella: Food And Beverages ($56,144.86)
+• Linea de producto crítico: Health And Beauty ($49,193.81)
+• Tipo de cliente líder: Member ($189,694.85)
+• Tipo de cliente crítica: Normal ($133,271.97)
+
+PUNTOS CRÍTICOS:
+
+• Ciudad crítico: Mandalay ($106,197.74)
+  Representa 32.9% del total
+  → Tipo de cliente más débil en Mandalay: Normal ($46,373.51)
+  → Linea de producto crítico en Mandalay: Food And Beverages ($15,214.90)
+  → Recomendación: Investigar estrategia de Mandalay
+    con foco en Tipo de cliente y Linea de producto.
+
+RESUMEN ANUAL DE Ventas:
+• 2019: $322,966.82

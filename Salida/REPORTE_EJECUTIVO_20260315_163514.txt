@@ -1,0 +1,26 @@
+============================================================
+REPORTE EJECUTIVO AUTOMÁTICO
+Archivo: train_ok.xlsx
+Fecha: 2026-03-15 16:35:14
+Registros analizados: 891
+============================================================
+
+RESUMEN GENERAL:
+• Total Fare: $28,694.09
+• Promedio por transacción: $32.20
+• Valor máximo: $512.33
+• Valor mínimo: $0.00
+
+HALLAZGOS PRINCIPALES:
+• Embarked con mejor resultado: S ($17,439.62)
+• Embarked con menor resultado: DESCONOCIDO ($160.00)
+• Pclass líder: 1 ($18,177.40)
+• Pclass crítica: 2 ($3,801.84)
+
+PUNTOS CRÍTICOS:
+
+• Embarked crítico: DESCONOCIDO ($160.00)
+  Representa 0.6% del total
+  → Pclass más débil en DESCONOCIDO: 1 ($160.00)
+  → Recomendación: Investigar estrategia de DESCONOCIDO
+    con foco en Pclass y .

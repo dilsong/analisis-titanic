@@ -1,0 +1,18 @@
+=== CONFIGURACIÓN DEL DATASET ===
+¿Cuál es la columna de VALOR PRINCIPAL a medir?
+(ej: Vta_Total, Salario, Cantidad) → usuario escribe
+
+¿Cuál es la columna GEOGRÁFICA? (región, ciudad, zona)
+(ej: Region, Ciudad) → usuario escribe o omite
+
+¿Cuál es la columna de AGENTE? (vendedor, empleado)
+(ej: Vendedor, Empleado) → usuario escribe o omite
+
+¿Cuál es la columna de CATEGORÍA? (producto, departamento)
+(ej: Categoria, Departamento) → usuario escribe o omite
+
+¿Cuál es la columna de PUNTO DE VENTA? (tienda, sucursal)
+(ej: Tienda, Sucursal) → usuario escribe o omite
+
+¿Cuál es la columna de FECHA?
+(ej: Fecha, Date) → usuario escribe o omite
