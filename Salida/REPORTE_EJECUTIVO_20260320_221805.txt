@@ -1,0 +1,43 @@
+============================================================
+REPORTE EJECUTIVO AUTOMÁTICO
+Archivo: rrhh_s.csv
+Fecha: 2026-03-20 22:18:05
+Registros analizados: 1470
+============================================================
+
+CLASIFICACIÓN DE COLUMNAS:
+• DEMOGRAFIA: Age, Education, EducationField, Gender, MaritalStatus, YearsWithCurrManager
+• LABORAL: BusinessTravel, Department, JobInvolvement, JobLevel, JobRole, JobSatisfaction, OverTime, StockOptionLevel, YearsInCurrentRole
+• FINANCIERO: DailyRate, HourlyRate, MonthlyIncome, MonthlyRate, PercentSalaryHike
+• SATISFACCION: EnvironmentSatisfaction, PerformanceRating, RelationshipSatisfaction, WorkLifeBalance
+• ROTACION: Attrition
+• EXPERIENCIA: TotalWorkingYears, YearsAtCompany, YearsSinceLastPromotion
+• FECHA: TrainingTimesLastYear
+• ID: EmployeeCount, EmployeeNumber
+• OTRO: DistanceFromHome, NumCompaniesWorked, Over18, StandardHours
+
+RESUMEN GENERAL:
+• Total EnvironmentSatisfaction: 4,001.00
+• Promedio por registro: 2.72
+• Valor máximo: 4.00
+• Valor mínimo: 1.00
+
+HALLAZGOS PRINCIPALES:
+• Gender con mejor resultado: Male ($2,401.00)
+• Gender con menor resultado: Female ($1,600.00)
+• Department estrella: Research & Development ($2,637.00)
+• Department crítico: Human Resources ($169.00)
+• Department líder: Research & Development ($2,637.00)
+• Department crítica: Human Resources ($169.00)
+• DistanceFromHome top: 2 ($587.00)
+• DistanceFromHome más baja: 27 ($35.00)
+
+PUNTOS CRÍTICOS:
+
+• Gender crítico: Female ($1,600.00)
+  Representa 40.0% del total
+  → Department más débil en Female: Human Resources ($58.00)
+  → Department crítico en Female: Human Resources ($58.00)
+  → DistanceFromHome más baja en Female: 19 ($9.00)
+  → Recomendación: Investigar estrategia de Female
+    con foco en Department y Department.

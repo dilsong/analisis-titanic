@@ -6,9 +6,108 @@ import seaborn as sns
 from datetime import datetime
 
 
+# CALSIFICACIÓN DE CAMPOS
+def clasificar_columnas(df):
+    print("\n=== CLASIFICACIÓN AUTOMÁTICA DE COLUMNAS ===")
+    
+    clasificacion = {
+        'demografia':   [],
+        'laboral':      [],
+        'financiero':   [],
+        'satisfaccion': [],
+        'rotacion':     [],
+        'experiencia':  [],
+        'fecha':        [],
+        'id':           [],
+        'otro':         []
+    }
+    
+    keywords = {
+        'demografia':   ['age', 'gender', 'sex', 'marital', 'education', 'field',
+                        'edad', 'sexo', 'genero', 'estado'],
+        'laboral':      ['department', 'job', 'role', 'position', 'travel', 
+                        'overtime', 'level', 'cargo', 'departamento', 'puesto'],
+        'financiero':   ['income', 'salary', 'rate', 'price', 'revenue', 'hike',
+                        'salario', 'ingreso', 'tarifa', 'precio', 'venta', 'fare'],
+        'satisfaccion': ['satisfaction', 'rating', 'score', 'performance', 
+                        'balance', 'involvement', 'satisfaccion', 'calificacion'],
+        'rotacion':     ['attrition', 'churn', 'active', 'status', 'survived',
+                        'rotacion', 'activo', 'estado', 'baja'],
+        'experiencia':  ['years', 'tenure', 'seniority', 'working', 'company',
+                        'anos', 'experiencia', 'antiguedad'],
+        'fecha':        ['date', 'fecha', 'time', 'year', 'month', 'day',
+                        'año', 'mes', 'dia'],
+        'id':           ['id', 'number', 'code', 'codigo', 'numero', 'count']
+    }
+    
+    for col in df.columns:
+        col_lower = col.lower()
+        clasificada = False
+        for categoria, words in keywords.items():
+            if any(w in col_lower for w in words):
+                clasificacion[categoria].append(col)
+                clasificada = True
+                break
+        if not clasificada:
+            clasificacion['otro'].append(col)
+    
+    # Mostrar clasificación
+    print("\nColumnas clasificadas automáticamente:")
+    for categoria, cols in clasificacion.items():
+        if cols:
+            print(f"\n  {categoria.upper()}:")
+            for col in cols:
+                print(f"    → {col}")
+    
+    # Permitir correcciones
+    if input("\n¿Deseas corregir alguna clasificación? (s/n): ").lower() == 's':
+        cols_todas = df.columns.tolist()
+        categorias = list(clasificacion.keys())
+        
+        while True:
+            print("\nColumnas disponibles:")
+            for i, col in enumerate(cols_todas, 1):
+                print(f"{i}. {col}")
+            
+            while True:
+                try:
+                    opc = int(input("\n¿Qué columna quieres reclasificar? (0 para terminar): "))
+                    if opc == 0:
+                        break
+                    if 1 <= opc <= len(cols_todas):
+                        col_sel = cols_todas[opc-1]
+                        break
+                    print("❌ Número fuera de rango.")
+                except ValueError:
+                    print("❌ Debes ingresar un número.")
+            
+            if opc == 0:
+                break
+            
+            print(f"\n¿A qué categoría mover [{col_sel}]?")
+            for i, cat in enumerate(categorias, 1):
+                print(f"{i}. {cat}")
+            
+            while True:
+                try:
+                    opc_cat = int(input("→ ")) - 1
+                    if 0 <= opc_cat < len(categorias):
+                        # Remover de categoría actual
+                        for cat in clasificacion:
+                            if col_sel in clasificacion[cat]:
+                                clasificacion[cat].remove(col_sel)
+                        # Agregar a nueva categoría
+                        clasificacion[categorias[opc_cat]].append(col_sel)
+                        print(f"✅ [{col_sel}] movida a {categorias[opc_cat].upper()}")
+                        break
+                    print("❌ Número fuera de rango.")
+                except ValueError:
+                    print("❌ Debes ingresar un número.")
+    
+    return clasificacion
+# FINAL DE CLASIFICACIÓN DE CAMPOS
 
 # DEFINICION DE CAMPOS PARA REPORTE AUTOMATICO
-
 def configurar_campos(df):
     print("\n=== CONFIGURACIÓN DEL DATASET ===")
     print("Vamos a identificar los campos clave para el reporte ejecutivo.")
@@ -126,12 +225,10 @@ def configurar_campos(df):
         print(f"   {clave.upper():12} → {valor if valor else 'No definido'}")
     
     return config, cols_numericas, cols_categoricas
-
 # FIN DE DEFINICION DE CAMPOS
 
 # REPORTE EJECUTIVO AUTOMÁTICO
-
-def generar_reporte_ejecutivo(df, config, nombre_archivo):
+def generar_reporte_ejecutivo(df, config, nombre_archivo, clasificacion=None):
     print("\n📝 GENERANDO REPORTE EJECUTIVO...")
     
     reporte = []
@@ -141,6 +238,12 @@ def generar_reporte_ejecutivo(df, config, nombre_archivo):
     reporte.append(f"Fecha: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     reporte.append(f"Registros analizados: {len(df)}")
     reporte.append("=" * 60)
+    # Mostrar clasificación en reporte
+    if clasificacion:
+        reporte.append("\nCLASIFICACIÓN DE COLUMNAS:")
+        for categoria, cols in clasificacion.items():
+            if cols:
+                reporte.append(f"• {categoria.upper()}: {', '.join(cols)}")
     
     col_valor    = config.get('valor')
     col_geo      = config.get('geo')
@@ -284,7 +387,6 @@ def generar_reporte_ejecutivo(df, config, nombre_archivo):
         print(linea)
     
     print(f"\n✅ Reporte guardado en: {nombre_reporte}")
-
 # FIN DE REPORTE EJECUTIVO AUTOMÁTICO
 
 def seleccionar_archivo():
@@ -900,6 +1002,7 @@ def main():
     print(f"   Columnas: {len(df.columns)}")
     
     # Configurar campos clave y columnas
+    clasificacion = clasificar_columnas(df)
     config, cols_numericas, cols_categoricas = configurar_campos(df)
     
     while True:
@@ -921,7 +1024,7 @@ def main():
         elif opc == '4':
             visualizaciones(df, cols_numericas, cols_categoricas)
         elif opc == '5':
-            generar_reporte_ejecutivo(df, config, nombre_archivo)
+            generar_reporte_ejecutivo(df, config, nombre_archivo, clasificacion)
         elif opc == '6':
             print("👋 ¡Hasta luego!")
             break
