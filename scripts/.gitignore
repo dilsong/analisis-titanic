@@ -1,0 +1,8 @@
+.env
+salida/
+entrada/
+__pycache__/
+*.pyc
+*.xlsx
+*.csv
+*.txt
